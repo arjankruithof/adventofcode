@@ -2,6 +2,6 @@
 
 Run app with `http-server` in your terminal. (`npm install --global http-server`)
 
-Solutions are show in the console.
+Solutions are shown in the console.
 
 All stuff is done in Vanilla JS by Arjan Kruithof.

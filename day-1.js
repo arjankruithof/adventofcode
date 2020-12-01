@@ -1,4 +1,3 @@
-<script>
 fetch('day-1.txt')
     .then(response => response.text())
     .then((responseText) => {
@@ -49,4 +48,3 @@ function runApp(input) {
 
     console.log('solution part 2:', solution);
 }
-</script>
