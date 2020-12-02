@@ -1,9 +1,11 @@
-fetch('day-1.txt')
+function fetchData() {
+    fetch('day-01.txt')
     .then(response => response.text())
     .then((responseText) => {
         const appData = responseText.split('\n');
         runApp(appData);
     });
+}
 
 function runApp(input) {
     let output = [];
