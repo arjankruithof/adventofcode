@@ -1,12 +1,3 @@
-function fetchData() {
-    fetch('./day-03.txt')
-    .then(response => response.text())
-    .then((responseText) => {
-        const appData = responseText.split('\n');
-        runApp(appData);
-    });
-}
-
 function runApp(input) {
     // part 1
     let index = 4;

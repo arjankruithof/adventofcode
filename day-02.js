@@ -1,12 +1,3 @@
-function fetchData() {
-    fetch('./day-02.txt')
-    .then(response => response.text())
-    .then((responseText) => {
-        const appData = responseText.split('\n');
-        runApp(appData);
-    });
-}
-
 function runApp(input) {
     let goodPasswordsPart1 = 0;
     let goodPasswordsPart2 = 0;
