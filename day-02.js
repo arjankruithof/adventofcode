@@ -1,4 +1,5 @@
-function runApp(input) {
+function runApp(appData) {
+    const input = appData.split('\n');
     let goodPasswordsPart1 = 0;
     let goodPasswordsPart2 = 0;
 

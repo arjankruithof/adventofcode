@@ -1,4 +1,5 @@
-function runApp(input) {
+function runApp(appData) {
+    const input = appData.split('\n');
     // part 1
     let index = 4;
     let amountOfTrees = 0;
