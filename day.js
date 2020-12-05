@@ -6,7 +6,7 @@ const randomString = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0
 script.src = `day-${day}.js?v=${randomString}`;
 document.head.appendChild(script);
 
-fetch(`./day-${day}.txt`)
+fetch(`./day-${day}.txt?v=${randomString}`)
 .then(response => response.text())
 .then((responseText) => {
     // const appData = responseText.split('\n');
