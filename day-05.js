@@ -54,12 +54,12 @@ function runApp(appData) {
     // part 2
     seatIds = seatIds.sort((a, b) => a - b);
 
-    const minSeat = Math.min(...seatIds);
+    const minSeat = seatIds[0];
     const maxSeat = seatIds[seatIds.length - 1];
 
     for (let seat = minSeat; seat < maxSeat; seat += 1) {
         if (!seatIds.includes(seat)) {
             console.log('solution part 2', seat);
         }
-  }
+    }
 }
