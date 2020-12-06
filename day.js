@@ -9,6 +9,5 @@ document.head.appendChild(script);
 fetch(`./day-${day}.txt?v=${randomString}`)
 .then(response => response.text())
 .then((responseText) => {
-    // const appData = responseText.split('\n');
     runApp(responseText);
 });

@@ -1,12 +1,12 @@
 function getMiddle(min, max, value) {
-        const middle = Math.floor((max - min - 1) / 2) + min;
+    const middle = Math.floor((max - min - 1) / 2) + min;
       
-        if (value === 'lower') {
-          return [min, middle];
-        } else {
-          return [middle + 1, max];
-        }
-      }
+    if (value === 'lower') {
+        return [min, middle];
+    } else {
+        return [middle + 1, max];
+    }
+}
       
 
 function runApp(appData) {
