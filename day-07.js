@@ -21,7 +21,6 @@ function getBagContents(bagColors, allBags) {
     bagColors.forEach(bagColor => {
         allBags.forEach(bag => {
             if (bag.indexOf(bagColor) === 0) {
-                // const currentBag = bag.replaceAll({' bags': '', ' bag': '', '.': ''});
                 const currentBag = bag.replaceAll(/ bags| bag|/gi, '');
                 const bagContents = currentBag.substring(bag.indexOf('contain') + 3, bag.length - 1).split(', ');
 
@@ -69,8 +68,6 @@ function runApp(appData) {
         bagsInsideMyBag = bagsInsideMyBag += bagsInside.length;
     } while (getBagContents(bagsInside, bags).length > 0);
     
-    // console.log('bagsInside', bagsInsideMyBag);
-
     console.log('solutionPart1', parentBags.length);
     console.log('solutionPart2', bagsInsideMyBag);
 }
