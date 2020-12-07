@@ -13,8 +13,6 @@ function countInArray(array, letter) {
 function runApp(appData) {
     const answerGroups = appData.split('\n\n');
 
-    console.log(answerGroups);
-
     let solutionPart1 = 0;
     let solutionPart2 = 0;
 
