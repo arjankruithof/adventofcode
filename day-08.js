@@ -38,7 +38,6 @@ function runApp(appData) {
     console.log('solutionPart1', accumulator);
 
     // part 2
-    let finished = false;
     for (let i = 0; i < input.length; i += 1) {
         let found = -1;
         stepsDone = [0];
@@ -49,7 +48,6 @@ function runApp(appData) {
             let stepData = input[currentStep];
 
             if (!stepData) {
-                finished = true;
                 console.log('solutionPart2', accumulator);
                 return;
             }
@@ -75,6 +73,6 @@ function runApp(appData) {
             stepsDone.push(currentStep);
             accumulator += executeStep(stepData)[0];
             currentStep += executeStep(stepData)[1];
-        } while (!stepsDone.includes(currentStep) && !finished);
+        } while (!stepsDone.includes(currentStep));
     }
 }
