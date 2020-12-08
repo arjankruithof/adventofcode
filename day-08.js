@@ -44,7 +44,7 @@ function runApp(appData) {
         stepsDone = [0];
         currentStep = executeStep(input[0])[1];
         accumulator = executeStep(input[0])[0];
-        console.log(i);
+
         do {
             let stepData = input[currentStep];
 
