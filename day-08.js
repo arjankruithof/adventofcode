@@ -38,41 +38,43 @@ function runApp(appData) {
     console.log('solutionPart1', accumulator);
 
     // part 2
+    let finished = false;
     for (let i = 0; i < input.length; i += 1) {
         let found = -1;
         stepsDone = [0];
         currentStep = executeStep(input[0])[1];
         accumulator = executeStep(input[0])[0];
+        console.log(i);
         do {
             let stepData = input[currentStep];
 
             if (!stepData) {
+                finished = true;
                 console.log('solutionPart2', accumulator);
                 return;
             }
 
             // replace nop
-
-            // if (stepData.indexOf('nop') === 0) {
-            //     found += 1;
-            // }
-
-            // if (stepData.indexOf('nop') === 0 && found === i) {
-            //     stepData = stepData.replace('nop', 'jmp');
-            // }
+            if (stepData.indexOf('nop') === 0) {
+                found += 1;
+                
+                if (found === i) {
+                    stepData = stepData.replace('nop', 'jmp');
+                }
+            }
 
             // replace jmp
             if (stepData.indexOf('jmp') === 0) {
                 found += 1;
-            }
-
-            if (stepData.indexOf('jmp') === 0 && found === i) {
-                stepData = stepData.replace('jmp', 'nop');
+                
+                if (found === i) {
+                    stepData = stepData.replace('jmp', 'nop');
+                }
             }
 
             stepsDone.push(currentStep);
             accumulator += executeStep(stepData)[0];
             currentStep += executeStep(stepData)[1];
-        } while (!stepsDone.includes(currentStep) || !input[currentStep]);
+        } while (!stepsDone.includes(currentStep) && !finished);
     }
 }
