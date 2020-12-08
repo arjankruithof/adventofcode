@@ -27,8 +27,9 @@ function runApp(appData) {
     const start = window.performance.now();
     const input = appData.split('\n');
     let stepsDone = [0];
-    let currentStep = executeStep(input[0])[1];
-    let accumulator = executeStep(input[0])[0];
+    let stepResult = executeStep(input[0]);
+    let accumulator = stepResult[0];
+    let currentStep = stepResult[1];
 
     do {
         stepsDone.push(currentStep);
@@ -42,8 +43,9 @@ function runApp(appData) {
     for (let i = 0; i < input.length; i += 1) {
         let found = -1;
         stepsDone = [0];
-        currentStep = executeStep(input[0])[1];
-        accumulator = executeStep(input[0])[0];
+        stepResult = executeStep(input[0]);
+        accumulator = stepResult[0];
+        currentStep = stepResult[1];
 
         do {
             let stepData = input[currentStep];
@@ -74,8 +76,10 @@ function runApp(appData) {
             }
 
             stepsDone.push(currentStep);
-            accumulator += executeStep(stepData)[0];
-            currentStep += executeStep(stepData)[1];
+
+            stepResult = executeStep(stepData);
+            accumulator = stepResult[0];
+            currentStep = stepResult[1];
         } while (!stepsDone.includes(currentStep));
     }
 
