@@ -11,6 +11,7 @@ function countInArray(array, letter) {
 }
 
 function runApp(appData) {
+    const start = window.performance.now();
     const answerGroups = appData.split('\n\n');
 
     let solutionPart1 = 0;
@@ -35,4 +36,7 @@ function runApp(appData) {
 
     console.log('solutionPart1', solutionPart1);
     console.log('solutionPart1', solutionPart2);
+
+    const end = window.performance.now();
+    console.log(`Execution time: ${end - start} ms`);
 }

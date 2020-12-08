@@ -23,7 +23,6 @@ function getBagContents(bagColors, allBags) {
             if (bag.indexOf(bagColor) === 0) {
                 // const currentBag = bag.replaceAll({' bags': '', ' bag': '', '.': ''});
                 const currentBag = bag.replaceAll(/ bags| bag/gi, '');
-                console.log('currentBag', currentBag);
                 const bagContents = currentBag.substring(bag.indexOf('contain') + 3, bag.length - 1).split(', ');
 
                 bagContents.forEach(content => {
@@ -44,6 +43,7 @@ function getBagContents(bagColors, allBags) {
 }
 
 function runApp(appData) {
+    const start = window.performance.now();
     const bags = appData.split('\n');
     const myBag = 'shiny gold';
     let parentBags = [];
@@ -70,8 +70,10 @@ function runApp(appData) {
         bagsInsideMyBag = bagsInsideMyBag += bagsInside.length;
     } while (getBagContents(bagsInside, bags).length > 0);
     
-    // console.log('bagsInside', bagsInsideMyBag);
 
     console.log('solutionPart1', parentBags.length);
     console.log('solutionPart2', bagsInsideMyBag);
+
+    const end = window.performance.now();
+    console.log(`Execution time: ${end - start} ms`);
 }

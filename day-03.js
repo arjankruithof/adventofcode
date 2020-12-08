@@ -1,4 +1,5 @@
 function runApp(appData) {
+    const start = window.performance.now();
     const input = appData.split('\n');
     // part 1
     let index = 4;
@@ -67,4 +68,7 @@ function runApp(appData) {
     });
 
     console.log('solution part 2', solutionPart2);
+
+    const end = window.performance.now();
+    console.log(`Execution time: ${end - start} ms`);
 }

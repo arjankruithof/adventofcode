@@ -1,4 +1,5 @@
 function runApp(appData) {
+    const start = window.performance.now();
     const input = appData.split('\n');
     let goodPasswordsPart1 = 0;
     let goodPasswordsPart2 = 0;
@@ -34,4 +35,7 @@ function runApp(appData) {
 
     console.log('solution part 1:', goodPasswordsPart1);
     console.log('solution part 2:', goodPasswordsPart2);
+
+    const end = window.performance.now();
+    console.log(`Execution time: ${end - start} ms`);
 }

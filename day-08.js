@@ -24,6 +24,7 @@ function executeStep(data) {
 }
 
 function runApp(appData) {
+    const start = window.performance.now();
     const input = appData.split('\n');
     let stepsDone = [0];
     let currentStep = executeStep(input[0])[1];
@@ -35,7 +36,7 @@ function runApp(appData) {
         currentStep += executeStep(input[currentStep])[1];
     } while (!stepsDone.includes(currentStep));
 
-    console.log('solutionPart1', accumulator);
+    console.log('solutionPart 1', accumulator);
 
     // part 2
     for (let i = 0; i < input.length; i += 1) {
@@ -48,7 +49,9 @@ function runApp(appData) {
             let stepData = input[currentStep];
 
             if (!stepData) {
-                console.log('solutionPart2', accumulator);
+                console.log('solutionPart 2', accumulator);
+                const end = window.performance.now();
+                console.log(`Execution time: ${end - start} ms`);
                 return;
             }
 
@@ -75,4 +78,5 @@ function runApp(appData) {
             currentStep += executeStep(stepData)[1];
         } while (!stepsDone.includes(currentStep));
     }
+
 }

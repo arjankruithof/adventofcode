@@ -10,6 +10,7 @@ function getMiddle(min, max, value) {
       
 
 function runApp(appData) {
+    const start = window.performance.now();
     const input = appData.split('\n');
     let seatIds = [];
     // part 1
@@ -60,6 +61,9 @@ function runApp(appData) {
     for (let seat = minSeat; seat < maxSeat; seat += 1) {
         if (!seatIds.includes(seat)) {
             console.log('solution part 2', seat);
+            const end = window.performance.now();
+            console.log(`Execution time: ${end - start} ms`);
+            return;
         }
     }
 }

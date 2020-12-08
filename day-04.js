@@ -1,4 +1,5 @@
 function runApp(appData) {
+    const start = window.performance.now();
     const input = appData.split(' ').join('\n');
     const passports = input.split('\n\n');
 
@@ -42,4 +43,7 @@ function runApp(appData) {
 
     console.log('solutionPart1', solutionPart1);
     console.log('solutionPart1', solutionPart2);
+
+    const end = window.performance.now();
+    console.log(`Execution time: ${end - start} ms`);
 }
