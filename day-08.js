@@ -82,5 +82,4 @@ function runApp(appData) {
             currentStep = stepResult[1];
         } while (!stepsDone.includes(currentStep));
     }
-
 }
