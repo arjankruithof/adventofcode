@@ -1,3 +1,38 @@
+const fs = require('fs');
+const path = require('path');
+
+const appData = fs.readFileSync(path.resolve(__dirname, 'day-07.txt'), 'utf8');
+
+const bags = appData.split('\n');
+const myBag = 'shiny gold';
+let parentBags = [];
+
+bags.forEach(bag => {
+    if (bag.includes(myBag, 1)) {
+        parentBags.push(bag.split(' ').slice(0 , 2).join(' '));
+    }
+});
+
+do {
+    const newBags = loop(parentBags, bags);
+    parentBags = parentBags.concat(newBags);
+} while (loop(parentBags, bags).length > 0);
+
+
+// part 2
+let bagsInsideMyBag = 0;
+let bagsInside = getBagContents([myBag], bags);
+bagsInsideMyBag = bagsInsideMyBag += bagsInside.length;
+
+do {
+    bagsInside = getBagContents(bagsInside, bags);
+    bagsInsideMyBag = bagsInsideMyBag += bagsInside.length;
+} while (getBagContents(bagsInside, bags).length > 0);
+
+
+console.log('solutionPart1', parentBags.length);
+console.log('solutionPart2', bagsInsideMyBag);
+
 function loop(parents, allBags) {
     const bagsToReturn = [];
     parents.forEach(parentBag => {
@@ -22,7 +57,7 @@ function getBagContents(bagColors, allBags) {
         allBags.forEach(bag => {
             if (bag.indexOf(bagColor) === 0) {
                 // const currentBag = bag.replaceAll({' bags': '', ' bag': '', '.': ''});
-                const currentBag = bag.replaceAll(/ bags| bag/gi, '');
+                const currentBag = bag.replace(/ bags| bag/gi, '');
                 const bagContents = currentBag.substring(bag.indexOf('contain') + 3, bag.length - 1).split(', ');
 
                 bagContents.forEach(content => {
@@ -40,40 +75,4 @@ function getBagContents(bagColors, allBags) {
     });
 
     return bags;
-}
-
-function runApp(appData) {
-    const start = window.performance.now();
-    const bags = appData.split('\n');
-    const myBag = 'shiny gold';
-    let parentBags = [];
-
-    bags.forEach(bag => {
-        if (bag.includes(myBag, 1)) {
-            parentBags.push(bag.split(' ').slice(0 , 2).join(' '));
-        }
-    });
-
-    do {
-        const newBags = loop(parentBags, bags);
-        parentBags = parentBags.concat(newBags);
-    } while (loop(parentBags, bags).length > 0);
-
-
-    // part 2
-    let bagsInsideMyBag = 0;
-    let bagsInside = getBagContents([myBag], bags);
-    bagsInsideMyBag = bagsInsideMyBag += bagsInside.length;
-
-    do {
-        bagsInside = getBagContents(bagsInside, bags);
-        bagsInsideMyBag = bagsInsideMyBag += bagsInside.length;
-    } while (getBagContents(bagsInside, bags).length > 0);
-    
-
-    console.log('solutionPart1', parentBags.length);
-    console.log('solutionPart2', bagsInsideMyBag);
-
-    const end = window.performance.now();
-    console.log(`Execution time: ${end - start} ms`);
 }

@@ -1,7 +1,3 @@
 # Advent of Code 2020
 
-Run app with `http-server` in your terminal. (`npm install --global http-server`)
-
-Solutions are shown in the console.
-
-All stuff is done in Vanilla JS by Arjan Kruithof.
+Run app with `node day-01.js` in your terminal.
